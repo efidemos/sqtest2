@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqtest2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqtest2
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sqtest2
+    spec:
+      containers:
+        - name: sqtest2
+          image: docker.io/tanuuidp/demo:0.0.1
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512M
+            requests:
+              cpu: 200m
+              memory: 256M
